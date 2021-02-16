@@ -1,37 +1,44 @@
 const http = require('http');
+const fs = require('fs');
 const formidable = require('formidable');
 const express = require('express');
+const app = express();
 var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
 
 setInterval(() => {
     workSpace.updateWorkSpace();
-}, 1000);
+}, 2000);
 
-const server = http.createServer((req, res) => {
-    if (req.url == '/fileupload') {
-        var form = new formidable.IncomingForm();
-        form.parse(req, function (err, fields, files) {
-          var oldpath = files.filetoupload.path;
-          var newpath = 'C:/Users/Your Name/' + files.filetoupload.name;
-          fs.rename(oldpath, newpath, function (err) {
-            if (err) throw err;
-            res.write('File uploaded and moved!');
-            res.end();
-          });
-     });
-     return;
-    }
+http.createServer((req, res) => {
+  if (req.url == '/fileupload') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      //console.log(files.multipleFiles.path);
+      console.log(files);
+      //console.log(files.filetoupload);
+      //console.log(files.filetoupload.path);
+      var oldpath = files.multipleFiles.path;
+      var newpath = 'C:/Users/cknight167/Desktop' + files.multipleFiles.name;
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.end('File uploaded and moved!');
+      });
+    });
+    return;
+  }
 
   if (req.url === '/download') {
-    app.get('/download', function(req, res){
-        const file = `../worktest2.txt`;
+    fs.readFile('index.html', function (err,data) {
+      if(err) throw err;
+     res.setHeader('Content-disposition', 'attachment; filename=working.txt');
+      res.end(data);
+      app.get('/download', function(req, res){
+        const file = `../work/new/tester.txt`;
         res.download(file); // Set disposition and send it.
-      });      
-    res.setHeader('Content-disposition', 'attachment; filename=working.txt');
-    res.writeHead(200, { 'content-type': 'text/plain' });
-    res.end("working");
+      });
+    });
     return;
   }
 
@@ -45,8 +52,6 @@ const server = http.createServer((req, res) => {
       <input type="submit" value="Upload" />
     </form>
   `);
-});
- 
-server.listen(port, hostname, () => {
+}).listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });

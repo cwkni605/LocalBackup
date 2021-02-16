@@ -3,14 +3,15 @@
     "express": "^4.17.1",
     "formidable": "^1.2.2",
     "fs-extra": "^9.1.0",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "nodemon": "^2.0.7"
   },
   "name": "expressproject",
   "version": "1.0.0",
   "description": "this is an express and gulp assingment",
   "main": "async-demo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon serverSTart.js"
   },
   "author": "Connor Knight",
   "license": "ISC"

@@ -36,6 +36,10 @@ exports.updateWorkSpace = function updateWorkSpace() {
     });
 };
 
+exports.readWorkSpace = function readWorkSpace() {
+  
+};
+
 /*
 setInterval(() => {
     fse.copySync(srcDir, destDir,{ overwrite: true }, (err) => {
