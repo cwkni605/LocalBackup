@@ -1,57 +1,58 @@
 const http = require('http');
 const fs = require('fs');
-const formidable = require('formidable');
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const app = express();
 var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
-
+/*
 setInterval(() => {
     workSpace.updateWorkSpace();
 }, 2000);
+*/
+app.use(fileUpload());
 
-http.createServer((req, res) => {
-  if (req.url == '/fileupload') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      //console.log(files.multipleFiles.path);
-      console.log(files);
-      //console.log(files.filetoupload);
-      //console.log(files.filetoupload.path);
-      var oldpath = files.multipleFiles.path;
-      var newpath = 'C:/Users/cknight167/Desktop' + files.multipleFiles.name;
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        res.end('File uploaded and moved!');
-      });
-    });
-    return;
+app.post('/upload', function(req, res) {
+  let sampleFile;
+  let uploadPath;
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.');
   }
 
-  if (req.url === '/download') {
-    fs.readFile('index.html', function (err,data) {
-      if(err) throw err;
-     res.setHeader('Content-disposition', 'attachment; filename=working.txt');
-      res.end(data);
-      app.get('/download', function(req, res){
-        const file = `../work/new/tester.txt`;
-        res.download(file); // Set disposition and send it.
-      });
-    });
-    return;
-  }
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  sampleFile = req.files.sampleFile;
+  uploadPath = '../work/' + sampleFile.name;
 
-  // show a file upload form
-  res.writeHead(200, { 'content-type': 'text/html' });
-  res.end(`
-    <h2>With Node.js <code>"http"</code> module</h2>
-    <form action="/fileupload" enctype="multipart/form-data" method="post">
-      <div>Text field title: <input type="text" name="title" /></div>
-      <div>File: <input type="file" name="multipleFiles" multiple="multiple" /></div>
-      <input type="submit" value="Upload" />
-    </form>
-  `);
-}).listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv(uploadPath, function(err) {
+    if (err)
+      return res.status(500).send(err);
+
+    res.send('File uploaded!');
+  });
+});
+
+app.get('/', function(req, res) {
+    res.send(`<html>
+    <body>
+      <form ref='uploadForm' id='uploadForm' action='http://${hostname}:${port}/upload' method='post' encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+      </form>     
+    </body>
+  </html>`);
+});
+app.get('/download', function(req, res){
+  //const file = `../work/new/tester.txt`;
+  const file = "../work/new/tester.txt";
+  res.download(file); // Set disposition and send it.
+  fs.readFile('index.html', function (err,data) {
+    res.write(data);
+   });
+});
+
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
