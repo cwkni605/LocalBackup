@@ -10,13 +10,7 @@ function updateWorkSpace() {
         console.log("success!");
       }
     });
-    fse.copySync(destDir+Date.now(), srcDir,{ overwrite: true }, (err) => {
-      if (err) {                 
-        console.error(err);
-      } else {
-        console.log("success!");
-      }
-    });
+    
 };
 
 exports.updateWorkSpace = function updateWorkSpace() {
@@ -27,14 +21,9 @@ exports.updateWorkSpace = function updateWorkSpace() {
         console.log("success!");
       }
     });
-    fse.copySync(destDir+Date.now(), srcDir,{ overwrite: true }, (err) => {
-      if (err) {                 
-        console.error(err);
-      } else {
-        console.log("success!");
-      }
-    });
 };
+
+updateWorkSpace();
 
 exports.readWorkSpace = function readWorkSpace() {
   

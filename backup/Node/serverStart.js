@@ -37,6 +37,7 @@ app.post('/upload', function(req, res) {
 
 app.get(/[\s\S]*/, function(req, res) {
   let router = req.url;
+  if(router == "/favicon.ico") router = "/";
   if (router.startsWith("/download")) {
     const file = "../work"+router.substring(9);
   res.download(file);
