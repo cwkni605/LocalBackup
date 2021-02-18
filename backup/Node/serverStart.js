@@ -7,11 +7,11 @@ var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
 app.use(fileUpload());
-/*
+
 setInterval(() => {
     workSpace.updateWorkSpace();
-}, 2000);
-*/
+}, 10000);
+
 
 
 app.post('/upload', function(req, res) {
