@@ -7,11 +7,11 @@ var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
 app.use(fileUpload());
-
+/*
 setInterval(() => {
     workSpace.updateWorkSpace();
 }, 10000);
-
+*/
 
 
 app.post('/upload', function(req, res) {
@@ -37,15 +37,26 @@ app.post('/upload', function(req, res) {
 
 app.get(/[\s\S]*/, function(req, res) {
   let router = req.url;
+
+  let filePath = String(router);
+  filePath  = filePath.replaceAll("%20", " ")//-------------- 
+
   if(router == "/favicon.ico") router = "/";
-  if (router.startsWith("/download")) {
+  if (router.startsWith("/BackTheUp")) {
+    workSpace.updateWorkSpace(); // backs the up
+    fs.readFile("returnPage.html", "utf-8",(err, data)=>{
+      if(err) throw err;
+      res.send(data);
+    });
+  }
+  else if (router.startsWith("/download")) {
     const file = "../work"+router.substring(9);
   res.download(file);
   }
   else {
     fs.readFile("index.html", "utf-8",(err, data)=>{
       let tempList = "";
-      fs.readdir("../work/"+router,(err, files)=>{
+      fs.readdir("../work/"+filePath,(err, files)=>{
         if(err) throw err;
         let template = ``;
         if(router != "/") tempList = `<a href="${router.substring(0, router.substring(0, router.lastIndexOf("/")).lastIndexOf("/")+1)}" class="list-group-item">^ Up One Directory ^</a>`;

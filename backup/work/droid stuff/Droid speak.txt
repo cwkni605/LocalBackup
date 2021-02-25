@@ -1,0 +1,15 @@
+94 english characters on the english keyboard
+	(26*2)+(21*2) <--includes numbers and symbls like 1, $, and =
+125 possible configurations for the 5 tone 3 note format
+	5^3 <-- five tones in a 3 note format
+that leaves 31 extra blank combinations that can be used for advanced complete words or phrases to be put in.
+
+
+tone1:  !!	no sound
+tone2:  __	low tone
+tone3:  --	high tone
+tone4:  _-	low to high tone
+tone5:  -_	high to low tone
+
+example:  _-!!!!   _-__!!   -_!!!!   -___!!
+	  A        B	    a	     b

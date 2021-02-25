@@ -23,12 +23,25 @@ exports.updateWorkSpace = function updateWorkSpace() {
     });
 };
 
-updateWorkSpace();
-
-exports.readWorkSpace = function readWorkSpace() {
-  
-};
-
+//updateWorkSpace();
+//                                                            /\         
+                                                             //\\        
+                                                            //  \\       
+//exports.readWorkSpace = function readWorkSpace() {       //CODE\\      };
+                                                          //      \\     
+                                                         //        \\    
+                                                       ///          \\\  
+                                                      ///     /\     \\\ 
+                                                     /////  ///\\\  \\\\\
+//                                                   \\\\\  \\\///  /////
+//                                                    \\\     \/     /// 
+//                                                     \\\          ///  
+//                                                       \\        //    
+//                                                        \\      //     
+//                                                         \\CODE//      
+//                                                          \\  //       
+//                                                           \\//        
+//                                                            \/         
 /*
 setInterval(() => {
     fse.copySync(srcDir, destDir,{ overwrite: true }, (err) => {
