@@ -17,6 +17,12 @@ setInterval(() => {
 app.post('/upload', function(req, res) {
   let sampleFile;
   let uploadPath;
+  let filePath = "";
+  
+  filePath = req.body.root;
+  for (let i = 0; filePath.includes("%20"); i++) {
+    filePath = filePath.replace("%20", " ");
+  }
 
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
@@ -24,7 +30,7 @@ app.post('/upload', function(req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile;
-  uploadPath = '../work/' + sampleFile.name;
+  uploadPath = '../work/'+ filePath + "/" + sampleFile.name;
 
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv(uploadPath, function(err) {
@@ -37,11 +43,12 @@ app.post('/upload', function(req, res) {
 
 app.get(/[\s\S]*/, function(req, res) {
   let router = req.url;
+  if(router == "/favicon.ico") router = "/";
 
   let filePath = String(router);
-  filePath  = filePath.replaceAll("%20", " ")//-------------- 
-
-  if(router == "/favicon.ico") router = "/";
+  for (let i = 0; filePath.includes("%20"); i++) {
+    filePath = filePath.replace("%20", " ");
+  }
   if (router.startsWith("/BackTheUp")) {
     workSpace.updateWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
@@ -71,6 +78,7 @@ app.get(/[\s\S]*/, function(req, res) {
           tempList += template.replace("^-^",files[i])+"\n";
         }
         data = data.replace("%&^&%", tempList);
+        data = data.replace("%&0^0&%", router);
         res.send(data);
       });
     });

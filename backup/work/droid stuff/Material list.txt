@@ -1,0 +1,62 @@
+Material list for R1-0-P
+
+
+//battery
+GoalZero yeti 150 AGM Lead Acid 168Wh
+size: 6.0in L x 3.8in W x 3.7 H
+https://www.goalzero.com/shop/last-chance-gear/goal-zero-yeti-150-portable-power-station/
+Ports: 2 USB ports (output): 5V, up to 2.1A (10W max), regulated
+	6mm port (output, 6mm, green, hexagon): 12V, up to 10A (120W max), regulated
+	12V car port (output): 12V, up to 10A (120W max)
+	AC inverter (output, modified sine wave): 110V, 60Hz, 0.7A (80W continuous, 160W surge max)
+	Charging port (input, 8mm, blue, circle): 14-29V, up to 5A (60W max)
+price per unit: 199.95
+amount: 1
+
+
+//NAS heart
+Raspberry Pi 4 Model B/8GB
+https://www.pishop.us/product/raspberry-pi-4-model-b-8gb/?src=raspberrypi
+ports: usb c power port
+	2 usb 2.0
+	3 usb 3.0
+	2 HDMI mini
+	gigibit ethernet
+	Raspberry Pi standard 40 pin GPIO header
+	micro sd card OS card
+price per unit: $75.00
+amount: 1
+
+
+//NAS heart to hard drive
+USB 3.0 SATA III Hard Drive Adapter Cable, SATA to USB Adapter Cable for 2.5 inch SSD & HDD, Support UASP, 9 inch, Black
+https://www.amazon.com/Drive-Adapter-Cable-Support-Black/dp/B07S9CKV7X/ref=sr_1_3?dchild=1&keywords=usb+to+sata+adapter&qid=1614664348&sr=8-3
+
+
+//router
+
+
+//storage
+Cheap ubs
+At wallmart
+capacity: 16gb
+Price per unit: ~2$
+stock: 5
+
+
+// cables
+
+
+//Light controller
+
+
+//wires
+
+
+//motors
+
+
+//LED
+
+
+//frame
