@@ -50,7 +50,14 @@ app.get(/[\s\S]*/, function(req, res) {
     filePath = filePath.replace("%20", " ");
   }
   if (router.startsWith("/BackTheUp")) {
-    workSpace.updateWorkSpace(); // backs the up
+    workSpace.backupWorkSpace(); // backs the up
+    fs.readFile("returnPage.html", "utf-8",(err, data)=>{
+      if(err) throw err;
+      res.send(data);
+    });
+  }
+  else if (router.startsWith("/BackTheUp2")) {
+    workSpace.backupWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
       if(err) throw err;
       res.send(data);

@@ -31,9 +31,12 @@ amount: 1
 //NAS heart to hard drive
 USB 3.0 SATA III Hard Drive Adapter Cable, SATA to USB Adapter Cable for 2.5 inch SSD & HDD, Support UASP, 9 inch, Black
 https://www.amazon.com/Drive-Adapter-Cable-Support-Black/dp/B07S9CKV7X/ref=sr_1_3?dchild=1&keywords=usb+to+sata+adapter&qid=1614664348&sr=8-3
+price per unit: 8.99$
+amount: 2 | 4 possible
 
 
 //router
+
 
 
 //storage

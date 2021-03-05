@@ -2,7 +2,7 @@ const fse = require('fs-extra');
 var srcDir = "../work/";
 var destDir = "g:/My Drive/backupDrive/";
 
-function updateWorkSpace() {
+function backupWorkSpace() {
   fse.copySync(srcDir, destDir+Date.now(),{ overwrite: true }, (err) => {
       if (err) {                 
         console.error(err);
@@ -13,7 +13,7 @@ function updateWorkSpace() {
     
 };
 
-exports.updateWorkSpace = function updateWorkSpace() {
+exports.backupWorkSpace = function backupWorkSpace() {
   fse.copySync(srcDir, destDir+Date.now(),{ overwrite: true }, (err) => {
       if (err) {                 
         console.error(err);
