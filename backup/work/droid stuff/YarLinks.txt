@@ -1,0 +1,10 @@
+https://developers.google.com/web/fundamentals/media/recording-video#save_the_data_from_the_camera
+
+https://www.google.com/search?newwindow=1&safe=strict&rlz=1C1GCEB_enUS918US918&ei=ik1BYJ3sCs3L0PEPofOA0AY&q=getusermedia%28%29+api+google&oq=getusermedia%28%29+api+google&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABMgUIIRCgATIFCCEQqwIyBQghEKsCOgcIABBHELADOgYIABAWEB46BwghEAoQoAFQizdYj0xg3FNoA3ACeACAAYgBiAG7CJIBAzEuOZgBAKABAaoBB2d3cy13aXrIAQjAAQE&sclient=gws-wiz&ved=0ahUKEwid2aaLx5fvAhXNJTQIHaE5AGoQ4dUDCA0&uact=5
+
+https://www.sitepoint.com/create-chrome-extension-10-minutes-flat/
+
+chrome://extensions/
+
+https://chrome-apps-doc2.appspot.com/extensions/tabCapture.html
+
