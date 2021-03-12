@@ -57,7 +57,7 @@ app.get(/[\s\S]*/, function(req, res) {
     });
   }
   else if (router.startsWith("/BackTheUp2")) {
-    workSpace.backupWorkSpace(); // backs the up
+    workSpace.updateWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
       if(err) throw err;
       res.send(data);

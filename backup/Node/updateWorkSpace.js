@@ -1,3 +1,4 @@
+const fs = require("fs");
 const fse = require('fs-extra');
 var srcDir = "../work/";
 var destDir = "g:/My Drive/backupDrive/";
@@ -10,7 +11,32 @@ function backupWorkSpace() {
         console.log("success!");
       }
     });
-    
+};
+
+function updateWorkSpace() {
+  fs.readdir(destDir, (err, files)=>{
+    let newestFolder = 1;
+    if(err)throw err;
+    files.sort((a,b)=>
+    {
+      if(b > a)
+      {
+          return 1;
+      }
+      else
+      {
+          return -1;
+      }
+    });
+    newestFolder = files[0];
+    fse.copySync(destDir+newestFolder, srcDir,{ overwrite: true }, (err) => {
+      if (err) {                 
+        console.error(err);
+      } else {
+        console.log("success!");
+      }
+    });
+  });
 };
 
 exports.backupWorkSpace = function backupWorkSpace() {
@@ -23,16 +49,42 @@ exports.backupWorkSpace = function backupWorkSpace() {
     });
 };
 
+exports.updateWorkSpace = function updateWorkSpace() {
+  fs.readdir(destDir, (err, files)=>{
+    let newestFolder = 1;
+    if(err)throw err;
+    files.sort((a,b)=>
+    {
+      if(b > a)
+      {
+          return 1;
+      }
+      else
+      {
+          return -1;
+      }
+    });
+    newestFolder = files[0];
+    fse.copySync(destDir+newestFolder, srcDir,{ overwrite: true }, (err) => {
+      if (err) {                 
+        console.error(err);
+      } else {
+        console.log("success!");
+      }
+    });
+  });
+};
+
 //updateWorkSpace();
 //                                                            /\         
-                                                             //\\        
-                                                            //  \\       
-//exports.readWorkSpace = function readWorkSpace() {       //CODE\\      };
-                                                          //      \\     
-                                                         //        \\    
-                                                       ///          \\\  
-                                                      ///     /\     \\\ 
-                                                     /////  ///\\\  \\\\\
+//                                                           //\\        
+//                                                          //  \\       
+//exports.coolSymbolImg = function coolSymbolImg() {       //CODE\\      };
+//                                                        //      \\     
+//                                                       //        \\    
+//                                                     ///          \\\  
+//                                                    ///     /\     \\\ 
+//                                                   /////  ///\\\  \\\\\
 //                                                   \\\\\  \\\///  /////
 //                                                    \\\     \/     /// 
 //                                                     \\\          ///  
@@ -42,21 +94,3 @@ exports.backupWorkSpace = function backupWorkSpace() {
 //                                                          \\  //       
 //                                                           \\//        
 //                                                            \/         
-/*
-setInterval(() => {
-    fse.copySync(srcDir, destDir,{ overwrite: true }, (err) => {
-        if (err) {                 
-          console.error(err);
-        } else {
-          console.log("success!");
-        }
-      });
-      fse.copySync(destDir, srcDir,{ overwrite: true }, (err) => {
-        if (err) {                 
-          console.error(err);
-        } else {
-          console.log("success!");
-        }
-      });
-}, 1000);
-*/

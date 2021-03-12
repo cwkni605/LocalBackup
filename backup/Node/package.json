@@ -9,7 +9,7 @@
   "name": "expressproject",
   "version": "1.0.0",
   "description": "this is an express and gulp assingment",
-  "main": "async-demo.js",
+  "main": "serverStart.js",
   "scripts": {
     "devStart": "nodemon serverSTart.js"
   },
