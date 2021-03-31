@@ -49,7 +49,7 @@ app.get(/[\s\S]*/, function(req, res) {
   for (let i = 0; filePath.includes("%20"); i++) {
     filePath = filePath.replace("%20", " ");
   }
-  if (router.startsWith("/BackTheUp")) {
+  if (router.startsWith("/BackTheUp1")) {
     workSpace.backupWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
       if(err) throw err;

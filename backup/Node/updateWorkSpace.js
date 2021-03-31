@@ -51,7 +51,7 @@ exports.backupWorkSpace = function backupWorkSpace() {
 
 exports.updateWorkSpace = function updateWorkSpace() {
   fs.readdir(destDir, (err, files)=>{
-    let newestFolder = 1;
+    let newestFolder = files[0];
     if(err)throw err;
     files.sort((a,b)=>
     {
