@@ -1,11 +1,11 @@
 const http = require('http');
 const fs = require('fs');
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const app = express();
-var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
+const fileUpload = require('express-fileupload');
+var workSpace = require('./updateWorkSpace.js');
 app.use(fileUpload());
 /*
 setInterval(() => {
@@ -49,7 +49,7 @@ app.get(/[\s\S]*/, function(req, res) {
   for (let i = 0; filePath.includes("%20"); i++) {
     filePath = filePath.replace("%20", " ");
   }
-  if (router.startsWith("/BackTheUp")) {
+  if (router.startsWith("/BackTheUp1")) {
     workSpace.backupWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
       if(err) throw err;

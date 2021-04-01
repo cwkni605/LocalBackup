@@ -11,7 +11,9 @@
   "description": "this is an express and gulp assingment",
   "main": "serverStart.js",
   "scripts": {
-    "devStart": "nodemon serverSTart.js"
+    "start": "node serverStart.js",
+    "devStart": "nodemon serverStart.js",
+    "build":"nexe"
   },
   "author": "Connor Knight",
   "license": "ISC"

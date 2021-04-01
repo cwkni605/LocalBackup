@@ -60,7 +60,7 @@
                                     <a href="">Backup Files</a>
                                     </h4>
                                     <p class="card-text">This is where you click to backup you files.</p>
-                                    <form ref='uploadForm' id='uploadForm' action='http://127.0.0.1:8000/BackTheUp' method='GET'>
+                                    <form ref='uploadForm' id='uploadForm' action='http://127.0.0.1:8000/BackTheUp1' method='GET'>
                                         <button type="submit">Backup</button>
                                     </form>
                                 </div>
@@ -72,7 +72,7 @@
                                     </h4>
                                     <p class="card-text">This is where you click to update your files from the previous backup.</p>
                                     <form ref='uploadForm' id='uploadForm' action='http://127.0.0.1:8000/BackTheUp2' method='GET'>
-                                        <button type="submit">Update</button>
+                                        <button style="color: red;border: red solid 2px; border-radius: 2px;" type="submit">Update</button>
                                     </form>
                                 </div>
                             </div>
@@ -162,10 +162,7 @@
                                         console.log(stream);
                                         var options = { mimeType: "video/webm" };
                                         mediaRecorder = new MediaRecorder(stream, options);
-
-                                        mediaRecorder.ondataavailable = handleDataAvailable;
-                                        mediaRecorder.start();
-
+                                        
                                         function handleDataAvailable(event) {
                                             console.log("data-available");
                                             if (event.data.size > 0) {
@@ -174,7 +171,7 @@
                                                 console.log(recordedChunks);
                                                 download();
                                             } else {
-                                                console.log("event size false");
+                                                console.log("recording is less than zero");
                                                 console.log(event.data.size);
                                                 // ...
                                             }
@@ -191,8 +188,11 @@
                                             window.URL.revokeObjectURL(url);
                                             console.log("downloaded");
                                         }
+                                        
+                                        mediaRecorder.ondataavailable = handleDataAvailable;
+                                        mediaRecorder.start();
 
-                                        // demo: to download after 9sec
+                                        // demo: to download after 2sec
                                         setTimeout(event => {
                                             console.log("stopping");
                                             mediaRecorder.stop();
