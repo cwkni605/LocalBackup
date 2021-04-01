@@ -49,7 +49,14 @@ exports.backupWorkSpace = function backupWorkSpace() {
     });
 };
 
-exports.updateWorkSpace = function updateWorkSpace() {
+exports.updateWorkSpace = function updateWorkSpace()
+{
+  try {
+    fs.rmdirSync(srcDir, { recursive: true });
+    //console.log(`${srcDir} is deleted!`);
+  } catch (err) {
+    console.error(`Error while deleting ${srcDir}.\n`+err);
+  }
   fs.readdir(destDir, (err, files)=>{
     let newestFolder = files[0];
     if(err)throw err;

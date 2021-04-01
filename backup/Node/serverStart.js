@@ -1,11 +1,11 @@
 const http = require('http');
 const fs = require('fs');
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const app = express();
-var workSpace = require('./updateWorkSpace.js');
 const hostname = '127.0.0.1';
 const port = 8000;
+const fileUpload = require('express-fileupload');
+var workSpace = require('./updateWorkSpace.js');
 app.use(fileUpload());
 /*
 setInterval(() => {
