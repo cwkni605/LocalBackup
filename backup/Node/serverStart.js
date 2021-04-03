@@ -22,7 +22,7 @@ app.post('/upload', function(req, res) {
   filePath = req.body.root;
   for (let i = 0; filePath.includes("%20"); i++) {
     filePath = filePath.replace("%20", " ");
-  }
+  };
 
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
@@ -48,7 +48,7 @@ app.get(/[\s\S]*/, function(req, res) {
   let filePath = String(router);
   for (let i = 0; filePath.includes("%20"); i++) {
     filePath = filePath.replace("%20", " ");
-  }
+  };
   if (router.startsWith("/BackTheUp1")) {
     workSpace.backupWorkSpace(); // backs the up
     fs.readFile("returnPage.html", "utf-8",(err, data)=>{
@@ -63,8 +63,8 @@ app.get(/[\s\S]*/, function(req, res) {
       res.send(data);
     });
   }
-  else if (router.startsWith("/download")) {
-    const file = "../work"+router.substring(9);
+  else if (filePath.startsWith("/download")) {
+    const file = "../work"+filePath.substring(9);
   res.download(file);
   }
   else {
