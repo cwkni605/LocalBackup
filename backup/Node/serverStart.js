@@ -7,11 +7,7 @@ const port = 8000;
 const fileUpload = require('express-fileupload');
 var workSpace = require('./updateWorkSpace.js');
 app.use(fileUpload());
-/*
-setInterval(() => {
-    workSpace.updateWorkSpace();
-}, 10000);
-*/
+
 
 
 app.post('/upload', function(req, res) {
